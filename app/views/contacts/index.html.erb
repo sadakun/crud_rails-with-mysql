@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Contacts</h1>
+<h1>Contact List</h1>
 
 <div id="contacts">
-  <% @contacts.each do |contact| %>
-    <%= render contact %>
-    <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
-  <% end %>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Github</th>
+      <th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.fname %></td>
+      <td><%= contact.lname %></td>
+      <td><%= contact.email %></td>
+      <td><%= contact.phone %></td>
+      <td><%= contact.github_account %></td>
+      <td>
+        <%= link_to "Edit", edit_contact_path(contact) %> |
+        <%= link_to "Delete", contact, method: :delete %> |
+        <%= link_to "Show", contact_path(contact) %>
+      <td> 
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
 </div>
 
 <%= link_to "New contact", new_contact_path %>
